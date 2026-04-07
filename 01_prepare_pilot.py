@@ -15,6 +15,11 @@ def list_images(dataset_root: Path):
     return files
 
 
+def image_id_key(path: Path):
+    stem = path.stem
+    return int(stem) if stem.isdigit() else 10**9
+
+
 def write_template(out_csv: Path, images, dataset_root: Path):
     out_csv.parent.mkdir(parents=True, exist_ok=True)
     with out_csv.open("w", newline="", encoding="utf-8") as f:
@@ -48,6 +53,13 @@ def main():
         help="Random seed for reproducible sampling.",
     )
     parser.add_argument(
+        "--mode",
+        type=str,
+        default="random",
+        choices=["random", "first_ids"],
+        help="random: sample randomly, first_ids: take smallest numeric image IDs.",
+    )
+    parser.add_argument(
         "--out-csv",
         type=str,
         default="labels/pilot_labels_template.csv",
@@ -72,15 +84,19 @@ def main():
             f"sample-size ({args.sample_size}) > total images ({len(images)})."
         )
 
-    random.seed(args.seed)
-    sample = random.sample(images, args.sample_size)
-    sample.sort(key=lambda p: p.name)
+    if args.mode == "random":
+        random.seed(args.seed)
+        sample = random.sample(images, args.sample_size)
+        sample.sort(key=lambda p: p.name)
+    else:
+        ordered = sorted(images, key=image_id_key)
+        sample = ordered[: args.sample_size]
 
     write_template(out_csv, sample, dataset_root)
     print(f"Total images found: {len(images)}")
     print(f"Pilot sample size: {len(sample)}")
     print(f"Template written to: {out_csv}")
-    print("Label values must be one of: C, S, Unknown")
+    print("Label values must be one of: N, C, S, Unknown")
 
 
 if __name__ == "__main__":

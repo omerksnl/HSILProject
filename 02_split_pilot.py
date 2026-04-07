@@ -5,12 +5,12 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 
 
-ALLOWED_LABELS = {"C", "S", "Unknown"}
+ALLOWED_LABELS = {"N", "C", "S", "Unknown"}
 
 
 def normalize_labels(df: pd.DataFrame) -> pd.DataFrame:
     df["label"] = df["label"].astype(str).str.strip()
-    mapping = {"c": "C", "s": "S", "unknown": "Unknown"}
+    mapping = {"n": "N", "c": "C", "s": "S", "unknown": "Unknown"}
     df["label"] = df["label"].str.lower().map(mapping).fillna(df["label"])
     return df
 

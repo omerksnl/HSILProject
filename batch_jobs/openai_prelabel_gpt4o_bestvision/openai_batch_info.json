@@ -1,0 +1,7 @@
+{
+  "batch_id": "batch_69d512054698819091010b6d80a8e759",
+  "input_file_id": "file-KQDQt9j39kYEFE7yaYViz4",
+  "request_jsonl": "C:\\Users\\EXCALIBUR\\OneDrive\\Masaüstü\\HSILProject\\batch_jobs\\openai_prelabel_gpt4o_bestvision\\openai_batch_requests.jsonl",
+  "mapping_json": "C:\\Users\\EXCALIBUR\\OneDrive\\Masaüstü\\HSILProject\\batch_jobs\\openai_prelabel_gpt4o_bestvision\\openai_batch_map.json",
+  "csv_path": "C:\\Users\\EXCALIBUR\\OneDrive\\Masaüstü\\HSILProject\\labels\\pilot_labels_template_gpt54.csv"
+}
