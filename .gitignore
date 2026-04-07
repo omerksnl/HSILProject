@@ -1,0 +1,36 @@
+# Python cache and bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Build and packaging
+build/
+dist/
+*.egg-info/
+
+# ML artifacts and logs
+runs/
+checkpoints/
+logs/
+*.h5
+*.keras
+*.ckpt
+*.tflite
+
+# Large dataset directory (keep raw dataset out of git)
+spinal-ai2024/
+
+# Label outputs (keep template if you want to track, ignore generated splits by default)
+labels/pilot_train.csv
+labels/pilot_val.csv
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
