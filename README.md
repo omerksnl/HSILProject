@@ -63,8 +63,28 @@ Then run scripts from WSL as usual (recommended for training speed).
 
 ### macOS
 
-- Apple Silicon can use Metal acceleration (MPS) with `tensorflow-macos` + `tensorflow-metal`.
-- Otherwise, training runs on CPU.
+- Apple Silicon (M1/M2/M3) can use Metal acceleration (MPS).
+- Intel Macs generally run TensorFlow on CPU.
+
+#### macOS setup (Apple Silicon)
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -U pip
+pip install tensorflow-macos tensorflow-metal
+pip install pandas numpy scikit-learn pillow tqdm openai
+python -c "import tensorflow as tf; print(tf.config.list_physical_devices())"
+```
+
+If you see no `GPU` device listed, training will still work on CPU.
+
+#### Daily startup (macOS)
+
+```bash
+cd /path/to/HSILProject
+source .venv/bin/activate
+```
 
 ## Dataset setup (for collaborators)
 
