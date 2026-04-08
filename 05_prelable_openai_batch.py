@@ -17,6 +17,11 @@ def normalize_label(v: str) -> str:
     return mapping.get(s, "Unknown")
 
 
+def parse_image_id(name: str):
+    stem = Path(str(name)).stem
+    return int(stem) if stem.isdigit() else None
+
+
 def safe_note(existing_note: str, add_text: str) -> str:
     base = (existing_note or "").strip()
     if not base:
@@ -99,6 +104,12 @@ def cmd_submit(args):
 
     df["label"] = df["label"].fillna("").astype(str)
     work_df = df[df["label"].str.strip() == ""].copy()
+    if args.start_id > 0 and args.end_id > 0:
+        if args.start_id > args.end_id:
+            raise ValueError("start-id must be <= end-id")
+        ids = work_df["image_name"].apply(parse_image_id)
+        mask = ids.apply(lambda x: x is not None and args.start_id <= x <= args.end_id)
+        work_df = work_df[mask].copy()
     if args.max_rows > 0:
         work_df = work_df.iloc[: args.max_rows]
     if work_df.empty:
@@ -257,6 +268,8 @@ def main():
     p_submit.add_argument("--dataset-root", type=str, default="spinal-ai2024")
     p_submit.add_argument("--model", type=str, default="gpt-4o-mini")
     p_submit.add_argument("--max-rows", type=int, default=0)
+    p_submit.add_argument("--start-id", type=int, default=0)
+    p_submit.add_argument("--end-id", type=int, default=0)
     p_submit.add_argument("--out-dir", type=str, default="batch_jobs/openai_prelabel")
     p_submit.set_defaults(func=cmd_submit)
 

@@ -20,14 +20,42 @@ def image_id_key(path: Path):
     return int(stem) if stem.isdigit() else 10**9
 
 
-def write_template(out_csv: Path, images, dataset_root: Path):
+def parse_image_id(name: str):
+    stem = Path(str(name)).stem
+    return int(stem) if stem.isdigit() else None
+
+
+def rows_from_images(images, dataset_root: Path):
+    rows = []
+    for img in images:
+        rel = img.relative_to(dataset_root).as_posix()
+        rows.append(
+            {
+                "image_path": rel,
+                "image_name": img.name,
+                "label": "",
+                "confidence": "",
+                "notes": "",
+            }
+        )
+    return rows
+
+
+def write_template_rows(out_csv: Path, rows):
     out_csv.parent.mkdir(parents=True, exist_ok=True)
     with out_csv.open("w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
         writer.writerow(["image_path", "image_name", "label", "confidence", "notes"])
-        for img in images:
-            rel = img.relative_to(dataset_root).as_posix()
-            writer.writerow([rel, img.name, "", "", ""])
+        for r in rows:
+            writer.writerow(
+                [
+                    r.get("image_path", ""),
+                    r.get("image_name", ""),
+                    r.get("label", ""),
+                    r.get("confidence", ""),
+                    r.get("notes", ""),
+                ]
+            )
 
 
 def main():
@@ -65,6 +93,13 @@ def main():
         default="labels/pilot_labels_template.csv",
         help="Output CSV path for annotation template.",
     )
+    parser.add_argument("--start-id", type=int, default=0, help="Inclusive start image ID.")
+    parser.add_argument("--end-id", type=int, default=0, help="Inclusive end image ID.")
+    parser.add_argument(
+        "--append",
+        action="store_true",
+        help="Append new range rows to existing CSV (dedupe by image_name).",
+    )
     args = parser.parse_args()
 
     dataset_root = Path(args.dataset_root).resolve()
@@ -84,7 +119,18 @@ def main():
             f"sample-size ({args.sample_size}) > total images ({len(images)})."
         )
 
-    if args.mode == "random":
+    if args.start_id > 0 and args.end_id > 0:
+        if args.start_id > args.end_id:
+            raise ValueError("start-id must be <= end-id")
+        ranged = []
+        for p in images:
+            pid = parse_image_id(p.name)
+            if pid is not None and args.start_id <= pid <= args.end_id:
+                ranged.append(p)
+        sample = sorted(ranged, key=image_id_key)
+        if len(sample) == 0:
+            raise RuntimeError("No images found in requested ID range.")
+    elif args.mode == "random":
         random.seed(args.seed)
         sample = random.sample(images, args.sample_size)
         sample.sort(key=lambda p: p.name)
@@ -92,7 +138,32 @@ def main():
         ordered = sorted(images, key=image_id_key)
         sample = ordered[: args.sample_size]
 
-    write_template(out_csv, sample, dataset_root)
+    new_rows = rows_from_images(sample, dataset_root)
+    if args.append and out_csv.exists():
+        existing = []
+        with out_csv.open("r", newline="", encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            for r in reader:
+                existing.append(
+                    {
+                        "image_path": r.get("image_path", ""),
+                        "image_name": r.get("image_name", ""),
+                        "label": r.get("label", ""),
+                        "confidence": r.get("confidence", ""),
+                        "notes": r.get("notes", ""),
+                    }
+                )
+        by_name = {r["image_name"]: r for r in existing}
+        for r in new_rows:
+            if r["image_name"] not in by_name:
+                by_name[r["image_name"]] = r
+        merged = list(by_name.values())
+        merged.sort(key=lambda r: (parse_image_id(r["image_name"]) or 10**9))
+        write_template_rows(out_csv, merged)
+        print(f"Appended rows. Total CSV rows now: {len(merged)}")
+    else:
+        write_template_rows(out_csv, new_rows)
+
     print(f"Total images found: {len(images)}")
     print(f"Pilot sample size: {len(sample)}")
     print(f"Template written to: {out_csv}")

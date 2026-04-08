@@ -8,6 +8,64 @@ Pilot workflow for scoliosis X-ray curve type classification (`N`, `C`, `S`, `Un
 pip install -r requirements.txt
 ```
 
+## GPU usage (Windows / WSL2) and macOS notes
+
+### Windows
+
+- TensorFlow on native Windows is often **CPU-only** for recent versions.
+- If you want to use an NVIDIA GPU, run training inside **WSL2 (Ubuntu)**.
+
+### WSL2 (Ubuntu) + NVIDIA GPU (recommended)
+
+1. Confirm WSL2 distros:
+
+```powershell
+wsl -l -v
+```
+
+2. Open Ubuntu:
+
+```powershell
+wsl -d Ubuntu-22.04
+```
+
+3. Inside Ubuntu, verify GPU:
+
+```bash
+nvidia-smi
+```
+
+4. Create venv + install TensorFlow with CUDA:
+
+```bash
+sudo apt update
+sudo apt install -y python3-venv python3-pip
+
+python3 -m venv ~/hsi
+source ~/hsi/bin/activate
+
+pip install -U pip
+pip install "tensorflow[and-cuda]==2.15.1"
+python -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
+```
+
+5. Install project deps in the same venv:
+
+```bash
+cd /mnt/c/Users/EXCALIBUR/OneDrive/Masaüstü/HSILProject
+pip install pandas numpy scikit-learn pillow tqdm openai
+```
+
+Note:
+- Do not install any DirectML / `tfdml` plugins inside WSL. They are Windows-specific and can break TensorFlow in Linux.
+
+Then run scripts from WSL as usual (recommended for training speed).
+
+### macOS
+
+- Apple Silicon can use Metal acceleration (MPS) with `tensorflow-macos` + `tensorflow-metal`.
+- Otherwise, training runs on CPU.
+
 ## Dataset setup (for collaborators)
 
 1. Each teammate downloads the Spinal-AI2024 dataset locally.
@@ -26,50 +84,36 @@ HSILProject/
     subset5/
 ```
 
-## Pilot pipeline
+## Daily startup (Windows + WSL)
 
-1. Prepare 300-image labeling template:
+Open Ubuntu:
 
-```bash
-python 01_prepare_pilot.py --dataset-root spinal-ai2024 --sample-size 300
+```powershell
+wsl -d Ubuntu-22.04
 ```
 
+Inside Ubuntu:
+
+```bash
+source ~/hsi/bin/activate
+cd /mnt/c/Users/EXCALIBUR/OneDrive/Masaüstü/HSILProject
+```
+
+Optional one-liner from Windows:
+
+```powershell
+wsl -d Ubuntu-22.04 --cd /mnt/c/Users/EXCALIBUR/OneDrive/Masaüstü/HSILProject
+```
+
+## Pilot labeling flow
+
+1. Prepare a block of images.
 2. Fill labels in `labels/pilot_labels_template.csv` (`N`, `C`, `S`, `Unknown`).
+3. Split labeled data to train/val.
 
-### Labeling notes guideline
-
-- If the case is clear (`N`, `C`, or `S`) and confidence is high, keep `notes` empty.
-- If label is `Unknown` or borderline, add a short reason (2-6 words).
-- Keep wording consistent across teammates.
-
-Recommended note values:
-- `low image quality`
-- `rotation artifact`
-- `curve not clear`
-- `possible double curve`
-- `posture ambiguous`
-- `hardware overlap`
-- `borderline C/S`
-
-3. Split into train/val (240/60):
-
-```bash
-python 02_split_pilot.py --in-csv labels/pilot_labels_template.csv --train-size 240 --val-size 60
-```
-
-4. Train multi-task model (class + 3 Cobb angles):
-
-```bash
-python 03_train_cls_tf.py --dataset-root spinal-ai2024 --train-csv labels/pilot_train.csv --val-csv labels/pilot_val.csv --cobb-train-txt spinal-ai2024/Cobb_spinal-AI2024-train_gt.txt --img-size 320
-```
-
-5. Predict and apply reporting rule:
-- `C` => report highest 1 Cobb angle
-- `S` => report highest 2 Cobb angles
-
-```bash
-python 06_predict_multitask_tf.py --model-path runs/pilot_resnet50_multitask/best_model.keras --dataset-root spinal-ai2024 --in-csv labels/pilot_labels_template.csv --out-csv runs/predictions_multitask.csv
-```
+Labeling note rule:
+- Clear (`N`, `C`, `S`) -> keep `notes` empty.
+- Borderline/uncertain -> short note (2-6 words).
 
 ## Two-stage training 
 
@@ -127,6 +171,34 @@ Behavior:
 
 Tip:
 - Start with `--max-rows 20` on submit to test first.
+
+## Range-based labeling workflow
+
+Use ID ranges so you can grow labels in blocks (e.g., 1-300, then 301-600).
+
+Create first block:
+
+```bash
+python 01_prepare_pilot.py --dataset-root spinal-ai2024 --start-id 1 --end-id 300 --out-csv labels/pilot_labels_template.csv
+```
+
+Append next block to same CSV:
+
+```bash
+python 01_prepare_pilot.py --dataset-root spinal-ai2024 --start-id 301 --end-id 600 --out-csv labels/pilot_labels_template.csv --append
+```
+
+Pre-label only a specific range:
+
+```bash
+python 05_prelable_openai_batch.py submit --csv labels/pilot_labels_template.csv --dataset-root spinal-ai2024 --model gpt-4o-mini --start-id 301 --end-id 600 --out-dir batch_jobs/openai_prelabel_301_600
+```
+
+Split only a specific range (optional):
+
+```bash
+python 02_split_pilot.py --in-csv labels/pilot_labels_template.csv --start-id 301 --end-id 600 --train-size 240 --val-size 60
+```
 
 ## Notes
 

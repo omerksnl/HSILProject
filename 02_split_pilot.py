@@ -15,6 +15,11 @@ def normalize_labels(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
+def parse_image_id(name: str):
+    stem = Path(str(name)).stem
+    return int(stem) if stem.isdigit() else None
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Split manually labeled pilot CSV into train/val."
@@ -39,6 +44,8 @@ def main():
     )
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--out-dir", type=str, default="labels")
+    parser.add_argument("--start-id", type=int, default=0, help="Inclusive start image ID.")
+    parser.add_argument("--end-id", type=int, default=0, help="Inclusive end image ID.")
     args = parser.parse_args()
 
     in_csv = Path(args.in_csv).resolve()
@@ -56,6 +63,14 @@ def main():
 
     df = normalize_labels(df)
     df = df[df["label"].isin(ALLOWED_LABELS)].copy()
+    if args.start_id > 0 and args.end_id > 0:
+        if args.start_id > args.end_id:
+            raise ValueError("start-id must be <= end-id")
+        image_ids = df["image_name"].apply(parse_image_id)
+        mask = image_ids.apply(
+            lambda x: x is not None and args.start_id <= x <= args.end_id
+        )
+        df = df[mask].copy()
     total_needed = args.train_size + args.val_size
     if len(df) < total_needed:
         raise ValueError(
