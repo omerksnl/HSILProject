@@ -1,0 +1,7 @@
+{
+  "batch_id": "batch_69d69eb49c8c8190ad57d3f2d8ec4296",
+  "input_file_id": "file-Wqf88LdnwyTmCfzipiuA3i",
+  "request_jsonl": "C:\\Users\\EXCALIBUR\\OneDrive\\Masaüstü\\HSILProject\\batch_jobs\\openai_prelabel_301_600\\openai_batch_requests.jsonl",
+  "mapping_json": "C:\\Users\\EXCALIBUR\\OneDrive\\Masaüstü\\HSILProject\\batch_jobs\\openai_prelabel_301_600\\openai_batch_map.json",
+  "csv_path": "C:\\Users\\EXCALIBUR\\OneDrive\\Masaüstü\\HSILProject\\labels\\pilot_labels_template.csv"
+}
