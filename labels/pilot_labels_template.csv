@@ -10,7 +10,7 @@ Spinal-AI2024-subset1/000008.jpg,000008.jpg,C,0.96,Visible single dominant thora
 Spinal-AI2024-subset1/000009.jpg,000009.jpg,C,0.93,Visible single dominant thoracolumbar lateral curvature; no clear second opposing curve.
 Spinal-AI2024-subset1/000010.jpg,000010.jpg,C,0.93,Visible single dominant thoracolumbar scoliosis curve; no clear second opposite major curve.
 Spinal-AI2024-subset1/000011.jpg,000011.jpg,C,0.86,Mild single thoracolumbar lateral curvature without a clear second opposing curve.
-Spinal-AI2024-subset1/000012.jpg,000012.jpg,N,0.78,Spine appears largely straight without a clear dominant lateral curvature; mild asymmetry only.
+Spinal-AI2024-subset1/000012.jpg,000012.jpg,N,0.9,Spine appears largely straight without a clear dominant lateral curvature; mild asymmetry only.
 Spinal-AI2024-subset1/000013.jpg,000013.jpg,C,0.95,Clear single dominant thoracolumbar scoliosis curve with lateral deviation; no clear second opposing curve.
 Spinal-AI2024-subset1/000014.jpg,000014.jpg,C,0.93,Clear single dominant thoracolumbar scoliosis curve with lateral deviation; no clear second opposite major curve.
 Spinal-AI2024-subset1/000015.jpg,000015.jpg,C,0.93,Visible single dominant thoracolumbar lateral curvature consistent with scoliosis.
@@ -87,7 +87,7 @@ Spinal-AI2024-subset1/000085.jpg,000085.jpg,S,0.88,Mild but clear single dominan
 Spinal-AI2024-subset1/000086.jpg,000086.jpg,C,0.93,Visible single dominant thoracolumbar lateral curve consistent with scoliosis; no clear second opposing curve.
 Spinal-AI2024-subset1/000087.jpg,000087.jpg,C,0.88,Visible single dominant thoracolumbar lateral curve; no clear second opposite curve.
 Spinal-AI2024-subset1/000088.jpg,000088.jpg,S,0.95,Clear thoracolumbar scoliosis with two opposing curves (S-shaped) visible.
-Spinal-AI2024-subset1/000089.jpg,000089.jpg,N,0.78,Spine appears largely straight with no clear dominant lateral curvature; image quality is limited but no meaningful scoliosis is evident.
+Spinal-AI2024-subset1/000089.jpg,000089.jpg,N,0.9,Spine appears largely straight with no clear dominant lateral curvature; image quality is limited but no meaningful scoliosis is evident.
 Spinal-AI2024-subset1/000090.jpg,000090.jpg,C,0.93,Visible single dominant thoracolumbar lateral curvature consistent with scoliosis.
 Spinal-AI2024-subset1/000091.jpg,000091.jpg,C,0.93,Visible single dominant thoracolumbar lateral curvature; no clear second opposing curve.
 Spinal-AI2024-subset1/000092.jpg,000092.jpg,C,0.86,"Visible single dominant lateral spinal curve with mild compensatory curvature, not a normal straight alignment."
@@ -213,7 +213,7 @@ Spinal-AI2024-subset1/000211.jpg,000211.jpg,C,0.86,Visible single dominant thora
 Spinal-AI2024-subset1/000212.jpg,000212.jpg,C,0.97,Clear single dominant thoracolumbar scoliosis curve; no convincing second opposite curve.
 Spinal-AI2024-subset1/000213.jpg,000213.jpg,C,0.95,Clear single dominant thoracolumbar scoliosis curve with lateral deviation; no convincing second opposite curve.
 Spinal-AI2024-subset1/000214.jpg,000214.jpg,S,0.96,Visible thoracolumbar scoliosis with a dominant lumbar curve and compensatory opposite thoracic curve.
-Spinal-AI2024-subset1/000215.jpg,000215.jpg,N,0.78,Spine appears largely straight with no clear dominant lateral curvature or compensatory second curve.
+Spinal-AI2024-subset1/000215.jpg,000215.jpg,N,0.9,Spine appears largely straight with no clear dominant lateral curvature or compensatory second curve.
 Spinal-AI2024-subset1/000216.jpg,000216.jpg,C,0.93,Visible single dominant thoracolumbar lateral curve consistent with scoliosis; no clear second opposing curve.
 Spinal-AI2024-subset1/000217.jpg,000217.jpg,C,0.86,Single dominant thoracolumbar lateral curvature visible; no clear second opposite major curve.
 Spinal-AI2024-subset1/000218.jpg,000218.jpg,C,0.95,Visible single dominant thoracolumbar lateral curvature consistent with scoliosis; no clear second opposing curve.
@@ -263,7 +263,7 @@ Spinal-AI2024-subset1/000261.jpg,000261.jpg,C,0.84,Mild but clear single thoraco
 Spinal-AI2024-subset1/000262.jpg,000262.jpg,C,0.86,Visible single dominant lateral spinal curve with thoracolumbar scoliosis; no clear second opposite curve.
 Spinal-AI2024-subset1/000263.jpg,000263.jpg,C,0.86,Visible single dominant thoracolumbar lateral curve; no clear second opposite curve.
 Spinal-AI2024-subset1/000264.jpg,000264.jpg,C,0.88,Visible single dominant thoracolumbar lateral curve with no clear second compensatory curve.
-Spinal-AI2024-subset1/000265.jpg,000265.jpg,N,0.78,Spine appears largely midline with no clear dominant lateral curvature.
+Spinal-AI2024-subset1/000265.jpg,000265.jpg,N,0.9,Spine appears largely midline with no clear dominant lateral curvature.
 Spinal-AI2024-subset1/000266.jpg,000266.jpg,C,0.88,Mild but clear single lateral spinal curve; no convincing second opposite curve.
 Spinal-AI2024-subset1/000267.jpg,000267.jpg,C,0.92,Visible single dominant lateral spinal curve with thoracolumbar deviation; no clear second opposite major curve.
 Spinal-AI2024-subset1/000268.jpg,000268.jpg,S,0.88,Visible thoracolumbar scoliosis with two opposing curves (upper thoracic and lower lumbar compensatory curve).
@@ -283,7 +283,7 @@ Spinal-AI2024-subset1/000281.jpg,000281.jpg,C,0.93,Visible single dominant thora
 Spinal-AI2024-subset1/000282.jpg,000282.jpg,C,0.97,Clear single dominant thoracolumbar scoliosis curve with no second major opposite curve visible.
 Spinal-AI2024-subset1/000283.jpg,000283.jpg,C,0.93,Visible single dominant thoracolumbar scoliosis curve with lateral deviation; no clear second opposite curve.
 Spinal-AI2024-subset1/000284.jpg,000284.jpg,C,0.86,Mild but clear single thoracolumbar lateral curvature; no convincing second opposite curve.
-Spinal-AI2024-subset1/000285.jpg,000285.jpg,N,0.78,Spine appears largely midline with no clear dominant lateral curvature; only minimal asymmetry.
+Spinal-AI2024-subset1/000285.jpg,000285.jpg,N,0.9,Spine appears largely midline with no clear dominant lateral curvature; only minimal asymmetry.
 Spinal-AI2024-subset1/000286.jpg,000286.jpg,C,0.95,Visible single dominant thoracolumbar lateral curvature consistent with scoliosis; no clear second opposing curve.
 Spinal-AI2024-subset1/000287.jpg,000287.jpg,C,0.93,Visible single dominant lateral spinal curve with mild thoracolumbar scoliosis; no clear second opposing curve.
 Spinal-AI2024-subset1/000288.jpg,000288.jpg,C,0.92,Visible single dominant lateral spinal curve consistent with scoliosis; no clear second opposite major curve.
@@ -322,7 +322,7 @@ Spinal-AI2024-subset1/000320.jpg,000320.jpg,C,0.860,Mild but clear single thorac
 Spinal-AI2024-subset1/000321.jpg,000321.jpg,C,0.860,Mild single dominant lateral spinal curve visible; no clear second opposite curve.
 Spinal-AI2024-subset1/000322.jpg,000322.jpg,C,0.880,Mild single dominant thoracolumbar lateral curvature; no clear second opposing curve.
 Spinal-AI2024-subset1/000323.jpg,000323.jpg,C,0.840,Visible single dominant thoracolumbar lateral curvature; no clear second opposing curve.
-Spinal-AI2024-subset1/000324.jpg,000324.jpg,N,0.780,Spine appears essentially midline with no clear dominant lateral curvature; mild positional asymmetry only.
+Spinal-AI2024-subset1/000324.jpg,000324.jpg,N,0.9,Spine appears essentially midline with no clear dominant lateral curvature; mild positional asymmetry only.
 Spinal-AI2024-subset1/000325.jpg,000325.jpg,C,0.860,Mild single thoracolumbar lateral curvature with one dominant curve; no clear second opposite curve.
 Spinal-AI2024-subset1/000326.jpg,000326.jpg,C,0.860,Mild but clear single dominant lateral spinal curve; no convincing second opposite curve.
 Spinal-AI2024-subset1/000327.jpg,000327.jpg,C,0.860,Mild-to-moderate single thoracolumbar lateral curvature visible; no clear second opposing curve.
@@ -339,7 +339,7 @@ Spinal-AI2024-subset1/000337.jpg,000337.jpg,C,0.860,Mild single dominant lateral
 Spinal-AI2024-subset1/000338.jpg,000338.jpg,C,0.930,Visible single dominant thoracolumbar lateral curve consistent with scoliosis.
 Spinal-AI2024-subset1/000339.jpg,000339.jpg,C,0.930,Visible single dominant thoracolumbar lateral curve consistent with scoliosis; no clear second opposite curve.
 Spinal-AI2024-subset1/000340.jpg,000340.jpg,S,0.950,Clear S-shaped scoliosis with two opposing curves in thoracic and lumbar spine.
-Spinal-AI2024-subset1/000341.jpg,000341.jpg,N,0.780,Spine appears largely straight with only minimal lateral deviation; no clear dominant scoliosis curve.
+Spinal-AI2024-subset1/000341.jpg,000341.jpg,N,0.9,Spine appears largely straight with only minimal lateral deviation; no clear dominant scoliosis curve.
 Spinal-AI2024-subset1/000342.jpg,000342.jpg,C,0.960,Clear single dominant thoracolumbar scoliosis curve with no convincing second major opposite curve.
 Spinal-AI2024-subset1/000343.jpg,000343.jpg,C,0.860,Visible single dominant thoracolumbar lateral curvature consistent with scoliosis; no clear second opposite curve.
 Spinal-AI2024-subset1/000344.jpg,000344.jpg,C,0.860,Mild single dominant lateral spinal curve with no clear second compensatory curve.
@@ -457,7 +457,7 @@ Spinal-AI2024-subset1/000455.jpg,000455.jpg,C,0.930,Single dominant thoracolumba
 Spinal-AI2024-subset1/000456.jpg,000456.jpg,C,0.930,Visible single dominant thoracolumbar lateral curvature consistent with scoliosis; no clear second opposing curve.
 Spinal-AI2024-subset1/000457.jpg,000457.jpg,C,0.860,Visible single dominant lateral spinal curve consistent with scoliosis; no clear second opposite curve.
 Spinal-AI2024-subset1/000458.jpg,000458.jpg,S,0.930,Clear thoracolumbar scoliosis with two opposing curves (S-shaped) rather than a single dominant curve.
-Spinal-AI2024-subset1/000459.jpg,000459.jpg,N,0.780,Spine appears largely straight with no clear dominant lateral curvature; only mild positional/rotational variation.
+Spinal-AI2024-subset1/000459.jpg,000459.jpg,N,0.9,Spine appears largely straight with no clear dominant lateral curvature; only mild positional/rotational variation.
 Spinal-AI2024-subset1/000460.jpg,000460.jpg,C,0.930,Visible single dominant thoracolumbar lateral curvature consistent with scoliosis; no clear second opposing curve.
 Spinal-AI2024-subset1/000461.jpg,000461.jpg,S,0.980,Clear double-curve scoliosis with opposite thoracic and lumbar curves.
 Spinal-AI2024-subset1/000462.jpg,000462.jpg,C,0.930,Visible single dominant thoracolumbar lateral curvature consistent with scoliosis; no clear second opposing curve.
@@ -536,7 +536,7 @@ Spinal-AI2024-subset1/000534.jpg,000534.jpg,S,0.980,Clear S-shaped scoliosis wit
 Spinal-AI2024-subset1/000535.jpg,000535.jpg,C,0.880,Visible single dominant lateral spinal curve consistent with scoliosis; no clear second opposite curve.
 Spinal-AI2024-subset1/000536.jpg,000536.jpg,C,0.860,Visible single dominant lateral spinal curve with mild thoracolumbar scoliosis; no clear second opposite curve.
 Spinal-AI2024-subset1/000537.jpg,000537.jpg,C,0.920,Visible single dominant thoracolumbar lateral curvature consistent with scoliosis; no clear second opposing curve.
-Spinal-AI2024-subset1/000538.jpg,000538.jpg,N,0.780,Spine appears largely straight with no clear dominant lateral curvature; only mild positional/rotational variation.
+Spinal-AI2024-subset1/000538.jpg,000538.jpg,N,0.9,Spine appears largely straight with no clear dominant lateral curvature; only mild positional/rotational variation.
 Spinal-AI2024-subset1/000539.jpg,000539.jpg,C,0.920,Visible single dominant thoracolumbar lateral curvature consistent with scoliosis.
 Spinal-AI2024-subset1/000540.jpg,000540.jpg,C,0.880,Visible single dominant lateral spinal curve with mild thoracolumbar scoliosis; no clear second opposite curve.
 Spinal-AI2024-subset1/000541.jpg,000541.jpg,C,0.930,Visible single dominant thoracolumbar lateral curvature consistent with scoliosis; no clear second opposing curve.
